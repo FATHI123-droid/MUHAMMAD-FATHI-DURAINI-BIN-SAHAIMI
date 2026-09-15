@@ -11,8 +11,10 @@ import {
 } from "./filters.js";
 
 
-const DATA_SOURCE =
-    "data/materials.json";
+const DATA_SOURCES = {
+    materials: "data/materials.json",
+    taxonomy: "data/taxonomy.json"
+};
 
 
 const state = {
