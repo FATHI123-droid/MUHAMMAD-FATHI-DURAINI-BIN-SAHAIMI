@@ -322,6 +322,7 @@ function renderResults(results) {
 
         container.innerHTML = `
             <div class="material-card">
+
                 <h2>
                     No materials found
                 </h2>
@@ -330,6 +331,7 @@ function renderResults(results) {
                     Try another search term or adjust
                     the repository filters.
                 </p>
+
             </div>
         `;
 
@@ -361,6 +363,16 @@ function createMaterialCard(material) {
                 </span>
             `)
             .join("");
+
+
+    const materialLink =
+        material.page ?? material.file;
+
+
+    const linkText =
+        material.page
+            ? "View Material"
+            : "Open Material";
 
 
     return `
@@ -404,13 +416,11 @@ function createMaterialCard(material) {
 
             <a
                 href="${encodeURI(
-                    material.file
+                    materialLink
                 )}"
                 class="button button-primary"
-                target="_blank"
-                rel="noopener noreferrer"
             >
-                Open Material
+                ${linkText}
             </a>
 
         </article>
@@ -430,6 +440,7 @@ function showError() {
 
     container.innerHTML = `
         <div class="material-card">
+
             <h2>
                 Repository unavailable
             </h2>
@@ -438,6 +449,7 @@ function showError() {
                 The repository data could not be loaded.
                 Please try again later.
             </p>
+
         </div>
     `;
 
