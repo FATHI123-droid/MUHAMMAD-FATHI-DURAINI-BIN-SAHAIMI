@@ -1,6 +1,5 @@
 {
   "schemaVersion": "1.0.0",
-
   "concepts": [
     {
       "id": "international-relations",
@@ -33,7 +32,6 @@
       "type": "field"
     }
   ],
-
   "topics": [
     {
       "id": "nato",
@@ -60,7 +58,6 @@
       "name": "International Security"
     }
   ],
-
   "actors": [
     {
       "id": "united-states",
@@ -78,7 +75,6 @@
       "type": "person"
     }
   ],
-
   "legal_instruments": [
     {
       "id": "north-atlantic-treaty",
@@ -86,7 +82,6 @@
       "type": "treaty"
     }
   ],
-
   "relationships": [
     {
       "source": "donald-trump",
