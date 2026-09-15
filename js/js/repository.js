@@ -58,10 +58,42 @@ async function boot() {
 }
 
 
-async function loadMaterials() {
+async function loadRepositoryData() {
 
-    const response =
-        await fetch(DATA_SOURCE);
+    const [
+        materialsResponse,
+        taxonomyResponse
+    ] = await Promise.all([
+        fetch(DATA_SOURCES.materials),
+        fetch(DATA_SOURCES.taxonomy)
+    ]);
+
+    if (!materialsResponse.ok) {
+        throw new Error(
+            `Unable to load ${DATA_SOURCES.materials}`
+        );
+    }
+
+    if (!taxonomyResponse.ok) {
+        throw new Error(
+            `Unable to load ${DATA_SOURCES.taxonomy}`
+        );
+    }
+
+    const materialsData =
+        await materialsResponse.json();
+
+    const taxonomyData =
+        await taxonomyResponse.json();
+
+    return {
+        materials:
+            materialsData.materials ?? [],
+
+        taxonomy:
+            taxonomyData ?? {}
+    };
+}
 
     if (!response.ok) {
 
