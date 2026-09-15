@@ -1,0 +1,34 @@
+{
+  "categories": [
+    {
+      "id": "international-law",
+      "name": "International Law",
+      "description": "International legal rules, principles, institutions, treaties and jurisprudence."
+    },
+    {
+      "id": "international-relations",
+      "name": "International Relations",
+      "description": "Theories, concepts, foreign policy, international institutions and global affairs."
+    },
+    {
+      "id": "human-rights",
+      "name": "Human Rights",
+      "description": "Human rights law, institutions, mechanisms and contemporary issues."
+    },
+    {
+      "id": "ihl",
+      "name": "International Humanitarian Law",
+      "description": "The legal framework governing armed conflict and the protection of persons affected by war."
+    },
+    {
+      "id": "international-criminal-law",
+      "name": "International Criminal Law",
+      "description": "International crimes, individual criminal responsibility and international criminal justice."
+    },
+    {
+      "id": "international-security",
+      "name": "International Security",
+      "description": "Security studies, conflict, strategic affairs and international peace and security."
+    }
+  ]
+}
