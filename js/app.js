@@ -1,11 +1,13 @@
 const DATA_SOURCES = {
     materials: "data/materials.json",
-    categories: "data/categories.json"
+    categories: "data/categories.json",
+    taxonomy: "data/taxonomy.json"
 };
 
 const state = {
     materials: [],
-    categories: []
+    categories: [],
+    taxonomy: null
 };
 
 document.addEventListener("DOMContentLoaded", boot);
@@ -18,7 +20,12 @@ async function boot() {
         renderLatestMaterials();
 
         console.info(
-            "Fathi Academic Knowledge Archive initialized."
+            "Fathi Academic Knowledge Archive initialized.",
+            {
+                materials: state.materials.length,
+                categories: state.categories.length,
+                taxonomy: state.taxonomy
+            }
         );
     } catch (error) {
         console.error(
@@ -41,14 +48,24 @@ async function loadJSON(source) {
 }
 
 async function loadRepositoryData() {
-    const [materialsData, categoriesData] =
-        await Promise.all([
-            loadJSON(DATA_SOURCES.materials),
-            loadJSON(DATA_SOURCES.categories)
-        ]);
+    const [
+        materialsData,
+        categoriesData,
+        taxonomyData
+    ] = await Promise.all([
+        loadJSON(DATA_SOURCES.materials),
+        loadJSON(DATA_SOURCES.categories),
+        loadJSON(DATA_SOURCES.taxonomy)
+    ]);
 
-    state.materials = materialsData.materials ?? [];
-    state.categories = categoriesData.categories ?? [];
+    state.materials =
+        materialsData.materials ?? [];
+
+    state.categories =
+        categoriesData.categories ?? [];
+
+    state.taxonomy =
+        taxonomyData ?? {};
 }
 
 function renderKnowledgeDomains() {
@@ -59,26 +76,33 @@ function renderKnowledgeDomains() {
 
     if (!container) return;
 
-    container.innerHTML = state.categories
-        .map(category => `
-            <article class="knowledge-card">
-                <h3>
-                    ${escapeHTML(category.name)}
-                </h3>
+    container.innerHTML =
+        state.categories
+            .map(category => `
+                <article class="knowledge-card">
 
-                <p class="text-muted">
-                    ${escapeHTML(category.description)}
-                </p>
+                    <h3>
+                        ${escapeHTML(category.name)}
+                    </h3>
 
-                <a
-                    href="repository.html?category=${encodeURIComponent(category.id)}"
-                    class="button button-primary"
-                >
-                    Explore
-                </a>
-            </article>
-        `)
-        .join("");
+                    <p class="text-muted">
+                        ${escapeHTML(
+                            category.description
+                        )}
+                    </p>
+
+                    <a
+                        href="repository.html?category=${encodeURIComponent(
+                            category.id
+                        )}"
+                        class="button button-primary"
+                    >
+                        Explore
+                    </a>
+
+                </article>
+            `)
+            .join("");
 }
 
 function renderLatestMaterials() {
@@ -93,37 +117,54 @@ function renderLatestMaterials() {
         [...state.materials]
             .sort(
                 (a, b) =>
-                    Number(b.year) - Number(a.year)
+                    Number(b.year) -
+                    Number(a.year)
             )
             .slice(0, 6);
 
-    container.innerHTML = latest
-        .map(createMaterialCard)
-        .join("");
+    container.innerHTML =
+        latest
+            .map(createMaterialCard)
+            .join("");
 }
 
 function createMaterialCard(material) {
-    const tags = (material.topics ?? [])
-        .map(topic => `
-            <span class="material-tag">
-                ${escapeHTML(topic)}
-            </span>
-        `)
-        .join("");
+    const tags =
+        (material.topics ?? [])
+            .map(topic => `
+                <span class="material-tag">
+                    ${escapeHTML(topic)}
+                </span>
+            `)
+            .join("");
+
+    const materialLink =
+        material.page ?? material.file;
+
+    const linkText =
+        material.page
+            ? "View Material"
+            : "Open Material";
 
     return `
         <article class="material-card">
 
             <span class="material-tag">
-                ${escapeHTML(material.category)}
+                ${escapeHTML(
+                    material.category
+                )}
             </span>
 
             <h3>
-                ${escapeHTML(material.title)}
+                ${escapeHTML(
+                    material.title
+                )}
             </h3>
 
             <p>
-                ${escapeHTML(material.description)}
+                ${escapeHTML(
+                    material.description
+                )}
             </p>
 
             <div class="cluster">
@@ -131,12 +172,12 @@ function createMaterialCard(material) {
             </div>
 
             <a
-                href="${encodeURI(material.file)}"
+                href="${encodeURI(
+                    materialLink
+                )}"
                 class="button button-primary"
-                target="_blank"
-                rel="noopener noreferrer"
             >
-                Open Material
+                ${linkText}
             </a>
 
         </article>
