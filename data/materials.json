@@ -1,4 +1,32 @@
 {
   "schemaVersion": "1.0.0",
-  "materials": []
+  "materials": [
+    {
+      "id": "ir-us-nato-trump-001",
+      "title": "Why Does Donald Trump Want the United States to Leave NATO?",
+      "description": "An academic analysis examining the strategic, political and security considerations surrounding Donald Trump's position towards NATO.",
+      "author": "Muhammad Fathi Duraini bin Sahaimi",
+      "year": 2026,
+      "category": "International Relations",
+      "topics": [
+        "NATO",
+        "United States Foreign Policy",
+        "European Security",
+        "Transatlantic Relations"
+      ],
+      "type": "Research Analysis",
+      "format": "DOCX",
+      "language": "English",
+      "keywords": [
+        "Donald Trump",
+        "NATO",
+        "United States",
+        "European Security",
+        "Security"
+      ],
+      "version": "1.0",
+      "status": "Published",
+      "file": "materials/international-relations/trump-nato-analysis.docx"
+    }
+  ]
 }
