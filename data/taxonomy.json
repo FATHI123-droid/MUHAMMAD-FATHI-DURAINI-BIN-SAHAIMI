@@ -1,0 +1,122 @@
+{
+  "schemaVersion": "1.0.0",
+
+  "concepts": [
+    {
+      "id": "international-relations",
+      "name": "International Relations",
+      "type": "field"
+    },
+    {
+      "id": "international-law",
+      "name": "International Law",
+      "type": "field"
+    },
+    {
+      "id": "human-rights",
+      "name": "Human Rights",
+      "type": "field"
+    },
+    {
+      "id": "international-humanitarian-law",
+      "name": "International Humanitarian Law",
+      "type": "field"
+    },
+    {
+      "id": "international-criminal-law",
+      "name": "International Criminal Law",
+      "type": "field"
+    },
+    {
+      "id": "international-security",
+      "name": "International Security",
+      "type": "field"
+    }
+  ],
+
+  "topics": [
+    {
+      "id": "nato",
+      "name": "NATO"
+    },
+    {
+      "id": "us-foreign-policy",
+      "name": "United States Foreign Policy"
+    },
+    {
+      "id": "european-security",
+      "name": "European Security"
+    },
+    {
+      "id": "transatlantic-relations",
+      "name": "Transatlantic Relations"
+    },
+    {
+      "id": "collective-security",
+      "name": "Collective Security"
+    },
+    {
+      "id": "international-security",
+      "name": "International Security"
+    }
+  ],
+
+  "actors": [
+    {
+      "id": "united-states",
+      "name": "United States",
+      "type": "state"
+    },
+    {
+      "id": "nato",
+      "name": "North Atlantic Treaty Organization",
+      "type": "international-organization"
+    },
+    {
+      "id": "donald-trump",
+      "name": "Donald Trump",
+      "type": "person"
+    }
+  ],
+
+  "legal_instruments": [
+    {
+      "id": "north-atlantic-treaty",
+      "name": "North Atlantic Treaty",
+      "type": "treaty"
+    }
+  ],
+
+  "relationships": [
+    {
+      "source": "donald-trump",
+      "relation": "associated_with",
+      "target": "us-foreign-policy"
+    },
+    {
+      "source": "donald-trump",
+      "relation": "discusses",
+      "target": "nato"
+    },
+    {
+      "source": "nato",
+      "relation": "concerns",
+      "target": "collective-security"
+    },
+    {
+      "source": "nato",
+      "relation": "related_to",
+      "target": "european-security"
+    },
+    {
+      "source": "nato",
+      "relation": "governed_by",
+      "target": "north-atlantic-treaty"
+    },
+    {
+      "source": "united-states",
+      "relation": "member_of",
+      "target": "nato"
+    }
+  ]
+}
