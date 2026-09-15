@@ -11,15 +11,12 @@ import {
 } from "./filters.js";
 
 
-const DATA_SOURCES = {
-    materials: "data/materials.json",
-    taxonomy: "data/taxonomy.json"
-};
+const DATA_SOURCE =
+    "data/materials.json";
 
 
 const state = {
     materials: [],
-    taxonomy: {},
     filters: readURLFilters()
 };
 
@@ -34,14 +31,8 @@ async function boot() {
 
     try {
 
-const repositoryData =
-    await loadRepositoryData();
-
-state.materials =
-    repositoryData.materials;
-
-state.taxonomy =
-    repositoryData.taxonomy;
+        state.materials =
+            await loadMaterials();
 
         initialiseFilters();
 
@@ -65,42 +56,10 @@ state.taxonomy =
 }
 
 
-async function loadRepositoryData() {
+async function loadMaterials() {
 
-    const [
-        materialsResponse,
-        taxonomyResponse
-    ] = await Promise.all([
-        fetch(DATA_SOURCES.materials),
-        fetch(DATA_SOURCES.taxonomy)
-    ]);
-
-    if (!materialsResponse.ok) {
-        throw new Error(
-            `Unable to load ${DATA_SOURCES.materials}`
-        );
-    }
-
-    if (!taxonomyResponse.ok) {
-        throw new Error(
-            `Unable to load ${DATA_SOURCES.taxonomy}`
-        );
-    }
-
-    const materialsData =
-        await materialsResponse.json();
-
-    const taxonomyData =
-        await taxonomyResponse.json();
-
-    return {
-        materials:
-            materialsData.materials ?? [],
-
-        taxonomy:
-            taxonomyData ?? {}
-    };
-}
+    const response =
+        await fetch(DATA_SOURCE);
 
     if (!response.ok) {
 
