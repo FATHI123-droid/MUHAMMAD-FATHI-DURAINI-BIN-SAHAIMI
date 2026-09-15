@@ -49,14 +49,24 @@ async function loadJSON(source) {
 
 async function loadRepositoryData() {
     const [
-        materialsData,
-        categoriesData,
-        taxonomyData
-    ] = await Promise.all([
-        loadJSON(DATA_SOURCES.materials),
-        loadJSON(DATA_SOURCES.categories),
-        loadJSON(DATA_SOURCES.taxonomy)
-    ]);
+    materialsData,
+    categoriesData
+] = await Promise.all([
+    loadJSON(DATA_SOURCES.materials),
+    loadJSON(DATA_SOURCES.categories)
+]);
+
+let taxonomyData = {};
+
+try {
+    taxonomyData =
+        await loadJSON(DATA_SOURCES.taxonomy);
+} catch (error) {
+    console.warn(
+        "Taxonomy could not be loaded. Continuing without taxonomy.",
+        error
+    );
+}
 
     state.materials =
         materialsData.materials ?? [];
