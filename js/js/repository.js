@@ -19,6 +19,7 @@ const DATA_SOURCES = {
 
 const state = {
     materials: [],
+    taxonomy: {},
     filters: readURLFilters()
 };
 
@@ -33,8 +34,14 @@ async function boot() {
 
     try {
 
-        state.materials =
-            await loadMaterials();
+const repositoryData =
+    await loadRepositoryData();
+
+state.materials =
+    repositoryData.materials;
+
+state.taxonomy =
+    repositoryData.taxonomy;
 
         initialiseFilters();
 
