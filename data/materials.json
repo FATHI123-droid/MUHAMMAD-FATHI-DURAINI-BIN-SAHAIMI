@@ -7,13 +7,19 @@
       "description": "An academic analysis examining the strategic, political and security considerations surrounding Donald Trump's position towards NATO.",
       "author": "Muhammad Fathi Duraini bin Sahaimi",
       "year": 2026,
-      "category": "International Relations",
+     "categoryId": "international-relations",
       "topics": [
         "NATO",
         "United States Foreign Policy",
         "European Security",
         "Transatlantic Relations"
       ],
+      "topicIds": [
+    "nato",
+    "us-foreign-policy",
+    "european-security",
+    "transatlantic-relations"
+],
       "type": "Research Analysis",
       "format": "DOCX",
       "language": "English",
