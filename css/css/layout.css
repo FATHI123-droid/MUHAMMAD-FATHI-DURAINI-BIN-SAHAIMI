@@ -89,4 +89,168 @@
 .site-footer {
     margin-top: var(--space-8);
     padding-block: var(--space-7);
+    .page-header {
+    padding-block: var(--space-8);
+
+    border-bottom: 1px solid var(--color-border);
+
+    background: var(--color-surface);
+}
+
+.page-header h1 {
+    max-width: 900px;
+
+    margin-bottom: var(--space-4);
+
+    font-family: var(--font-serif);
+    font-size: clamp(2.75rem, 7vw, 5.5rem);
+    font-weight: 500;
+    letter-spacing: -0.045em;
+}
+
+.page-description {
+    max-width: 720px;
+
+    color: var(--color-text-muted);
+
+    font-size: 1.1rem;
+}
+
+.repository-interface {
+    padding-block: var(--space-7);
+}
+
+.repository-toolbar {
+    padding: var(--space-5);
+
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+
+    background: var(--color-surface);
+
+    box-shadow: var(--shadow-sm);
+}
+
+.search-box {
+    margin-bottom: var(--space-5);
+}
+
+.search-box input {
+    width: 100%;
+
+    min-height: 56px;
+
+    padding-inline: 1rem;
+
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+
+    background: var(--color-surface-soft);
+    color: var(--color-text);
+
+    outline: none;
+
+    transition:
+        border-color var(--transition-fast),
+        box-shadow var(--transition-fast);
+}
+
+.search-box input:focus {
+    border-color: var(--color-primary);
+
+    box-shadow:
+        0 0 0 4px
+        color-mix(
+            in srgb,
+            var(--color-primary) 12%,
+            transparent
+        );
+}
+
+.filter-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(160px, 1fr)
+        );
+
+    gap: var(--space-4);
+}
+
+.filter-grid label {
+    display: block;
+
+    margin-bottom: var(--space-2);
+
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.filter-grid select {
+    width: 100%;
+
+    min-height: 44px;
+
+    padding-inline: 0.75rem;
+
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+
+    background: var(--color-surface);
+    color: var(--color-text);
+}
+
+.repository-status {
+    display: flex;
+    align-items: center;
+
+    min-height: 64px;
+
+    color: var(--color-text-muted);
+
+    font-size: 0.9rem;
+}
+    @media (max-width: 700px) {
+
+    .site-header {
+        min-height: auto;
+
+        padding-block: 1rem;
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: var(--space-3);
+    }
+
+    .site-navigation {
+        width: 100%;
+
+        overflow-x: auto;
+
+        padding-bottom: 0.25rem;
+    }
+
+    .site-navigation a {
+        white-space: nowrap;
+    }
+
+    .hero {
+        min-height: 560px;
+    }
+
+    .repository-toolbar {
+        padding: var(--space-4);
+    }
+
+    .filter-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
 }
