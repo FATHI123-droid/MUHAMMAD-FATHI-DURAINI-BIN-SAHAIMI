@@ -1,13 +1,11 @@
 const DATA_SOURCES = {
     materials: "data/materials.json",
-    categories: "data/categories.json",
-    taxonomy: "data/taxonomy.json"
+    categories: "data/categories.json"
 };
 
 const state = {
     materials: [],
-    categories: [],
-    taxonomy: null
+    categories: []
 };
 
 document.addEventListener("DOMContentLoaded", boot);
@@ -20,12 +18,7 @@ async function boot() {
         renderLatestMaterials();
 
         console.info(
-            "Fathi Academic Knowledge Archive initialized.",
-            {
-                materials: state.materials.length,
-                categories: state.categories.length,
-                taxonomy: state.taxonomy
-            }
+            "Fathi Academic Knowledge Archive initialized."
         );
     } catch (error) {
         console.error(
@@ -48,34 +41,17 @@ async function loadJSON(source) {
 }
 
 async function loadRepositoryData() {
-    const [
-    materialsData,
-    categoriesData
-] = await Promise.all([
-    loadJSON(DATA_SOURCES.materials),
-    loadJSON(DATA_SOURCES.categories)
-]);
-
-let taxonomyData = {};
-
-try {
-    taxonomyData =
-        await loadJSON(DATA_SOURCES.taxonomy);
-} catch (error) {
-    console.warn(
-        "Taxonomy could not be loaded. Continuing without taxonomy.",
-        error
-    );
-}
+    const [materialsData, categoriesData] =
+        await Promise.all([
+            loadJSON(DATA_SOURCES.materials),
+            loadJSON(DATA_SOURCES.categories)
+        ]);
 
     state.materials =
         materialsData.materials ?? [];
 
     state.categories =
         categoriesData.categories ?? [];
-
-    state.taxonomy =
-        taxonomyData ?? {};
 }
 
 function renderKnowledgeDomains() {
