@@ -7,7 +7,7 @@ import {
 
 
 const MATERIALS_SOURCE =
-    "data/materials.json";
+    "../data/materials.json";
 
 
 document.addEventListener(
