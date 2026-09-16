@@ -67,4 +67,69 @@ export function validateTaxonomy(taxonomy) {
         valid: errors.length === 0,
         errors
     };
+    export function validateKnowledgeObject(material) {
+    const errors = [];
+
+    const requiredFields = [
+        "id",
+        "title",
+        "description",
+        "author",
+        "year",
+        "category",
+        "categoryId",
+        "topics",
+        "topicIds",
+        "type",
+        "format",
+        "language",
+        "keywords",
+        "version",
+        "status"
+    ];
+
+    for (const field of requiredFields) {
+        if (
+            material[field] === undefined ||
+            material[field] === null ||
+            material[field] === ""
+        ) {
+            errors.push(
+                `Missing required field: ${field}`
+            );
+        }
+    }
+
+    if (!Array.isArray(material.topics)) {
+        errors.push(
+            "topics must be an array"
+        );
+    }
+
+    if (!Array.isArray(material.topicIds)) {
+        errors.push(
+            "topicIds must be an array"
+        );
+    }
+
+    if (!Array.isArray(material.keywords)) {
+        errors.push(
+            "keywords must be an array"
+        );
+    }
+
+    if (
+        material.provenance &&
+        typeof material.provenance !== "object"
+    ) {
+        errors.push(
+            "provenance must be an object"
+        );
+    }
+
+    return {
+        valid: errors.length === 0,
+        errors
+    };
+}
 }
