@@ -1,4 +1,5 @@
-const TAXONOMY_SOURCE = "/MUHAMMAD-FATHI-DURAINI-BIN-SAHAIMI/data/taxonomy.json";
+const TAXONOMY_SOURCE = 
+    "/MUHAMMAD-FATHI-DURAINI-BIN-SAHAIMI/data/taxonomy.json";
 let taxonomyCache = null;
 
 export async function loadTaxonomy() {
