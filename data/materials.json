@@ -11,8 +11,9 @@
   "course": "Bachelor of International Relations (Hons.)",
   "source": "Original academic work"
 },
-      "year": 2026,
-     "categoryId": "international-relations",
+"year": 2026,
+"category": "International Relations",
+"categoryId": "international-relations",
       "topics": [
         "NATO",
         "United States Foreign Policy",
