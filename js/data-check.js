@@ -8,8 +8,7 @@ import {
 
 
 const MATERIALS_SOURCE =
-    "../data/materials.json";
-
+    "/MUHAMMAD-FATHI-DURAINI-BIN-SAHAIMI/data/materials.json";
 
 document.addEventListener(
     "DOMContentLoaded",
