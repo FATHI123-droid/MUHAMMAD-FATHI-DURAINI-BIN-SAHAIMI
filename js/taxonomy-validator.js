@@ -32,6 +32,7 @@ export function validateMaterial(material, taxonomy) {
     };
 }
 
+
 export function validateTaxonomy(taxonomy) {
     const errors = [];
 
@@ -67,7 +68,10 @@ export function validateTaxonomy(taxonomy) {
         valid: errors.length === 0,
         errors
     };
-    export function validateKnowledgeObject(material) {
+}
+
+
+export function validateKnowledgeObject(material) {
     const errors = [];
 
     const requiredFields = [
@@ -131,5 +135,4 @@ export function validateTaxonomy(taxonomy) {
         valid: errors.length === 0,
         errors
     };
-}
 }
