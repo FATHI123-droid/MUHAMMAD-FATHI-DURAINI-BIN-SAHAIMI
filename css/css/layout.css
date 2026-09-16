@@ -89,6 +89,7 @@
 .site-footer {
     margin-top: var(--space-8);
     padding-block: var(--space-7);
+}
     .page-header {
     padding-block: var(--space-8);
 
