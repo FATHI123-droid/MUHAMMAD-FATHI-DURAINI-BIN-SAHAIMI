@@ -2,7 +2,8 @@ import { loadTaxonomy } from "./taxonomy.js";
 
 import {
     validateMaterial,
-    validateTaxonomy
+    validateTaxonomy,
+    validateKnowledgeObject
 } from "./taxonomy-validator.js";
 
 
