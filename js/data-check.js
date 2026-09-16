@@ -52,26 +52,39 @@ async function runValidation() {
             validateTaxonomy(taxonomy);
 
 
-        const materialResults =
-            (materialsData.materials ?? [])
-                .map(material => ({
+       const materialResults =
+    (materialsData.materials ?? [])
+        .map(material => {
+
+            const taxonomyValidation =
+                validateMaterial(
                     material,
-                    result:
-                        validateMaterial(
-                            material,
-                            taxonomy
-                        )
-                }));
+                    taxonomy
+                );
+
+            const schemaValidation =
+                validateKnowledgeObject(
+                    material
+                );
+
+            return {
+                material,
+                errors: [
+                    ...taxonomyValidation.errors,
+                    ...schemaValidation.errors
+                ]
+            };
+        });
 
 
         const materialErrors =
-            materialResults.flatMap(
-                ({ material, result }) =>
-                    result.errors.map(
-                        error =>
-                            `${material.id}: ${error}`
-                    )
-            );
+    materialResults.flatMap(
+        ({ material, errors }) =>
+            errors.map(
+                error =>
+                    `${material.id}: ${error}`
+            )
+    );
 
 
         const errors = [
